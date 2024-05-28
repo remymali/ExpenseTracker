@@ -1,22 +1,22 @@
 {
   "development": {
     "username": "root",
-    "password": "expense123",
-    "database": "database_development",
+    "password": "mysqlremy@123",
+    "database": "expense_tracker",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "expense123",
-    "database": "database_test",
+    "password": "mysqlremy@123",
+    "database": "expense_tracker_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": "expense123",
-    "database": "database_production",
+    "password": "mysqlremy@123",
+    "database": "expense_tracker_prod",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
