@@ -34,6 +34,26 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Delete an expense
+router.delete('/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const expense = await db.Expense.findByPk(id);
+
+    // Check if expense exists
+    if (!expense) {
+      return res.status(404).json({ message: 'Expense not found' });
+    }
+
+    // Delete the expense
+    await expense.destroy();
+
+    res.status(200).json({ message: 'Expense deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 // Create a new income
 router.post('/income', async (req, res) => {
     try {
@@ -76,5 +96,15 @@ router.delete('/income/:id', async (req, res) => {
     }
   });
   
-  
+  // Get combined data
+router.get('/combined', async (req, res) => {
+  try {
+    const expenses = await db.Expense.findAll();
+    const incomes = await db.Income.findAll();
+    res.json({ expenses, incomes });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 module.exports = router;
